@@ -35,6 +35,7 @@ import os
 import re
 import warnings
 import six
+from memory_profiler import profile
 
 from six.moves.urllib.parse import parse_qsl
 from six.moves.urllib.parse import quote
@@ -922,6 +923,7 @@ class Blob(_PropertyMixin):
             while not download.finished:
                 download.consume_next_chunk(transport, timeout=timeout)
 
+    @profile
     def download_to_file(
         self,
         file_obj,
@@ -1052,6 +1054,7 @@ class Blob(_PropertyMixin):
         except resumable_media.InvalidResponse as exc:
             _raise_from_invalid_response(exc)
 
+    @profile
     def download_to_filename(
         self,
         filename,
@@ -2085,6 +2088,7 @@ class Blob(_PropertyMixin):
 
         return response.json()
 
+    @profile
     def upload_from_file(
         self,
         file_obj,
@@ -2239,6 +2243,7 @@ class Blob(_PropertyMixin):
         except resumable_media.InvalidResponse as exc:
             _raise_from_invalid_response(exc)
 
+    @profile
     def upload_from_filename(
         self,
         filename,
