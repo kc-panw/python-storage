@@ -1961,7 +1961,6 @@ class Blob(_PropertyMixin):
 
         return response
 
-    @profile
     def _do_upload(
         self,
         client,
@@ -2092,7 +2091,6 @@ class Blob(_PropertyMixin):
 
         return response.json()
 
-    @profile
     def upload_from_file(
         self,
         file_obj,
@@ -2247,7 +2245,6 @@ class Blob(_PropertyMixin):
         except resumable_media.InvalidResponse as exc:
             _raise_from_invalid_response(exc)
 
-    @profile
     def upload_from_filename(
         self,
         filename,

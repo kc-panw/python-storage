@@ -29,6 +29,8 @@ from google.api_core import page_iterator
 from google.cloud._helpers import _LocalStack, _NOW
 from google.cloud.client import ClientWithProject
 from google.cloud.exceptions import NotFound
+from memory_profiler import profile
+
 from google.cloud.storage._helpers import _get_storage_host
 from google.cloud.storage._helpers import _bucket_bound_hostname_url
 from google.cloud.storage._http import Connection
@@ -93,6 +95,7 @@ class Client(ClientWithProject):
     )
     """The scopes required for authenticating as a Cloud Storage consumer."""
 
+    @profile
     def __init__(
         self,
         project=_marker,
