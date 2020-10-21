@@ -1961,6 +1961,7 @@ class Blob(_PropertyMixin):
 
         return response
 
+    @profile
     def _do_upload(
         self,
         client,
@@ -2089,7 +2090,10 @@ class Blob(_PropertyMixin):
                 checksum=checksum,
             )
 
-        return response.json()
+        jjj = response.json()
+        response.close()
+
+        return jjj
 
     def upload_from_file(
         self,
