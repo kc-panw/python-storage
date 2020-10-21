@@ -1663,6 +1663,8 @@ class Blob(_PropertyMixin):
             transport, data, object_metadata, content_type, timeout=timeout
         )
 
+        del upload
+
         return response
 
     def _initiate_resumable_upload(
