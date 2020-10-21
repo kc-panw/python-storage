@@ -1513,6 +1513,7 @@ class Blob(_PropertyMixin):
         content_type = self._get_content_type(content_type)
         return headers, object_metadata, content_type
 
+    @profile
     def _do_multipart_upload(
         self,
         client,
@@ -1958,6 +1959,7 @@ class Blob(_PropertyMixin):
 
         return response
 
+    @profile
     def _do_upload(
         self,
         client,
