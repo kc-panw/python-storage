@@ -2092,6 +2092,7 @@ class Blob(_PropertyMixin):
 
         jjj = response.json()
         response.close()
+        del response
 
         return jjj
 
