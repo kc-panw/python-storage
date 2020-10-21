@@ -16,6 +16,8 @@
 
 import functools
 
+from memory_profiler import profile
+
 from google.cloud import _http
 
 from google.cloud.storage import __version__
@@ -49,6 +51,7 @@ class Connection(_http.JSONConnection):
     API_URL_TEMPLATE = "{api_base_url}/storage/{api_version}{path}"
     """A template for the URL of a particular API call."""
 
+    @profile
     def api_request(self, *args, **kwargs):
         retry = kwargs.pop("retry", None)
         call = functools.partial(super(Connection, self).api_request, *args, **kwargs)
